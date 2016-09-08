@@ -1,0 +1,40 @@
+#auth-pane {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25%;
+  min-width: 300px;
+  height: 100%;
+  padding: 0;
+  border-right: 1px solid #d9d9d9;
+  box-shadow: -1px 1px 6px rgba(0, 0, 0, 0.35); }
+  #auth-pane .auth-info {
+    padding: 60px 30px 0;
+    text-align: center;
+    color: #999;
+    font-size: 14px; }
+    #auth-pane .auth-info .auth-img {
+      width: 90px;
+      height: 90px;
+      display: block;
+      border-radius: 50%;
+      margin: 0 auto 20px; }
+    #auth-pane .auth-info .auth-name {
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: #333; }
+    #auth-pane .auth-info .auth-intro {
+      margin-bottom: 20px; }
+    #auth-pane .auth-info .auth-count {
+      color: #777; }
+      #auth-pane .auth-info .auth-count i {
+        margin-left: 5px;
+        margin-right: 20px; }
+
+#auth-list {
+  position: relative;
+  margin-left: 25%;
+  width: 75%;
+  padding: 40px; }
+
+/*# sourceMappingURL=index.css.map */

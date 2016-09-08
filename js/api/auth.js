@@ -48,18 +48,17 @@ function isSignIn() {
 }
 //返回当前用户资料
 function currentUser() {
-    var user = wilddog.auth().currentUser;
-    if (user != null) {
-        var name = user.displayName;
-        // var email = user.email;
-        // var photoUrl = user.photoURL;
-        // var uid = user.uid;
-        //修改用户名的key
-        user.name = name;
-
-        return user;
-    } 
-    return false;
+    wilddog.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            var name = user.displayName;
+            user.name = name;
+            console.log(user);
+            return user;
+        } else {
+            console.log("no user");
+            return false;
+        }
+    });
 }
 function isEmailVerified() {
     var user = wilddog.auth().currentUser;
