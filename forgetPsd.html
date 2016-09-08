@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="jacques">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>重设密码--Want Alone</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="container">
+    <h1 class="text-center">Want&nbsp;&nbsp;Alone</h1>
+    <form class="form-signin" role="form">
+        <input type="email" class="js-email form-control" placeholder="Email" required autofocus>
+        <!--<input type="password" class="js-psd form-control" placeholder="Password" required>-->
+        <!--<input type="password" class="js-psd1 hide form-control" placeholder="Confirm Password" required>-->
+        <button class="js-resetMail btn btn-primary btn-block" type="submit" style="margin-top: 20px;">发送邮件</button>
+    </form>
+
+</div> <!-- /container -->
+
+
+<script src="js/vendor/jquery-2.1.3.min.js"></script>
+<script src = "https://cdn.wilddog.com/sdk/js/2.0.0/wilddog.js"></script>
+<script src = "js/api/global.js"></script>
+<script src = "js/biz/alert.js"></script>
+<script src = "js/api/auth.js"></script>
+<script>
+    $(function () {
+        $('.js-resetMail').click(function (e) {
+            e.preventDefault();
+            var _this = this;
+            var email = $('.js-email').val();
+            resetPsdMail(email,{
+                succ:function () {
+                    $(_this).text('邮件已发送');
+                    alert('密码重置邮件已发送,请到邮箱查收。','success')
+                },
+                fail:function () {
+                    alert("邮件发送失败,请检查邮箱地址是否正确并确保邮箱已注册Want Alone",'warning')
+                }
+            });
+        })
+    })
+</script>
+</body>
+</html>

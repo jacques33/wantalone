@@ -1,0 +1,40 @@
+body {
+  font-family: "Microsoft Yahei","Helvetica","Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #eee; }
+
+.container {
+  margin: 0 auto;
+  position: relative; }
+
+section, div, article, nav, header, footer {
+  box-sizing: border-box; }
+
+button, .btn, .btn:focus, .btn:active {
+  outline: none;
+  outline: 0; }
+
+.alert-panel {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  width: 360px;
+  max-width: 98%;
+  z-index: 9999; }
+  .alert-panel .alert {
+    width: 100%;
+    transition: all .3s;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 15px; }
+
+#logo {
+  padding: 1px 0 10px; }
+
+#footer {
+  padding: 40px 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5; }
+
+/*# sourceMappingURL=common.css.map */
