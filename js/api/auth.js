@@ -34,7 +34,7 @@ function authSignIn(email,psd,cb) {
     });
 }
 //是否登录
-function isSignIn() {
+function isSignIn(){
     var flag;
     wilddog.auth().onAuthStateChanged(function(user) {
         if (user) {

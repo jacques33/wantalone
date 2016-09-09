@@ -40,7 +40,7 @@ $(document).ready(function () {
                     authSignIn(email, psd, {
                         succ: function (res) {
                             console.log(res);
-
+                            window.location.href = 'index.html';
                         },
                         fail: function (msg) {
                             console.log(msg);

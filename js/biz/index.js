@@ -1,8 +1,25 @@
 /**
  * Created by jacques on 16/9/9.
  */
+///判断用户是否登录
+// wilddog.auth().onAuthStateChanged(function(user) {
+//     if (user) {
+//         console.log("wxl");
+//     } else {
+//         console.log("no user");
+//     }
+// });
+//
+if(isSignIn()){
+    var user = currentUser();
+    console.log(user.name)
+}else{
+    window.location.href = 'login.html';
+}
+
 
 $(document).ready(function () {
+
     var ch = $(window).height();
     $('#main-panel').css('height',ch+'px');
 
