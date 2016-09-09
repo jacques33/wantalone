@@ -2,12 +2,13 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 25%;
-  min-width: 300px;
+  width: 300px;
   height: 100%;
   padding: 0;
+  background-color: #f5f5f5;
   border-right: 1px solid #d9d9d9;
-  box-shadow: -1px 1px 6px rgba(0, 0, 0, 0.35); }
+  box-shadow: -1px 1px 6px rgba(0, 0, 0, 0.35);
+  z-index: 3; }
   #auth-pane .auth-info {
     padding: 60px 30px 0;
     text-align: center;
@@ -31,10 +32,54 @@
         margin-left: 5px;
         margin-right: 20px; }
 
-#auth-list {
+#main-panel {
   position: relative;
-  margin-left: 25%;
-  width: 75%;
+  margin-left: 300px;
+  width: -webkit-calc(100% - 300px);
+  width: -moz-calc(100% - 300px);
+  width: calc(100% - 300px);
+  background-color: #fff; }
+
+#auth-list {
   padding: 40px; }
+
+#edit .article-title {
+  padding: 10px;
+  border-bottom: 1px solid #ddd; }
+  #edit .article-title .input-lg, #edit .article-title .input-lg:focus {
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+    font-size: 24px;
+    color: #333; }
+#edit .format-tools {
+  background-color: #e5e5e5;
+  border-bottom: 1px solid #ddd;
+  padding: 0 30px; }
+  #edit .format-tools ul {
+    list-style: none;
+    margin: 0; }
+    #edit .format-tools ul li {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      font-size: 18px;
+      color: #666; }
+      #edit .format-tools ul li:hover {
+        background-color: #666;
+        color: #fff; }
+    #edit .format-tools ul li.active {
+      background-color: #666;
+      color: #fff; }
+#edit .article-content {
+  padding: 30px;
+  outline: 0;
+  border: 0;
+  box-shadow: 0; }
+  #edit .article-content blockquote {
+    min-height: 47px;
+    margin: 20px 0; }
 
 /*# sourceMappingURL=index.css.map */

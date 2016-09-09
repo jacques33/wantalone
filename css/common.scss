@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 body {
   font-family: "Microsoft Yahei","Helvetica","Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #f5f5f5;
@@ -12,6 +16,10 @@ section,div,article,nav,header,footer,aside{
 button,.btn,.btn:focus,.btn:active{
   outline: none;
   outline: 0;
+}
+blockquote{
+  background-color: #f5f5f5;
+  border-left: 5px solid #ddd;
 }
 
 .alert-panel{

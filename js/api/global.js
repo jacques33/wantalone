@@ -30,3 +30,10 @@ function checkPsd(psd) {
     }
     return true;
 }
+
+//光标位置在最后面
+
+function setFocus(obj){
+    var t= obj.html();
+    obj.html("").focus().html(t);
+} 
