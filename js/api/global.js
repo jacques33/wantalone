@@ -7,6 +7,8 @@ var config = {
 };
 wilddog.initializeApp(config, "DEFAULT");
 
+var ref = wilddog.sync().ref();
+
 //验证邮箱
 function checkEmail(mail) {
     var msg = '';
@@ -30,10 +32,3 @@ function checkPsd(psd) {
     }
     return true;
 }
-
-//光标位置在最后面
-
-function setFocus(obj){
-    var t= obj.html();
-    obj.html("").focus().html(t);
-} 

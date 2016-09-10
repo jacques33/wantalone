@@ -8,12 +8,11 @@
     <meta name="author" content="jacques">
 
     <title>Want Alone</title>
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="favicon.ico">
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/common.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
-
 
 </head>
 <body>
@@ -24,8 +23,15 @@
         </section>
         <section class="auth-info">
             <img class="auth-img" src="img/auth.png">
-            <h3 class="auth-name">Jacques</h3>
-            <p class="auth-intro">如果时间可以倒流,我会在第一天就闭上眼,这样什么都看不见。</p>
+            <div class="edit-info">
+                <input class="js-edit-name form-control" type="text" placeholder="昵称…">
+                <input class="js-edit-intro form-control" type="text" placeholder="简介…">
+                <button class="js-submit-edit btn btn-success">保存</button>
+            </div>
+            <div class="auth-name-intro hide">
+                <h3 class="auth-name">Jacques</h3>
+                <p class="auth-intro">如果时间可以倒流,我会在第一天就闭上眼,这样什么都看不见。</p>
+            </div>
             <p class="auth-count">
                 文章:<i class="article-num">18</i>
                 字数:<i class="font-num">185442</i>

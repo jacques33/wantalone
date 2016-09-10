@@ -6,12 +6,27 @@
 // 用户注册
 function authSignUp(email,psd,cb) {
     wilddog.auth().createUserWithEmailAndPassword(email, psd).then(function (user) {
-
         cb.succ && cb.succ(user);
+        createUserData(user);
     }).catch(function (error) {
         // Handle Errors here.
         cb.fail && cb.fail(error);
         console.log(error)
+    });
+}
+//创建一条用户数据
+function createUserData(user) {
+    var id = user.uid;
+    ref.child("user").push({
+        id:id,
+        name: user.displayName,
+        email:user.email
+
+    }, function(error) {
+        if (error == null){
+            // 数据同步到野狗云端成功完成
+            console.log('创建用户数据成功')
+        }
     });
 }
 //发送注册邮件验证
@@ -46,6 +61,15 @@ function isSignIn(){
         return flag;
     });
 }
+//是否登录，上一个方法总是先返回false，因此不做判断
+function getSignStatus() {
+    var isSign = localStorage.getItem('wilddog:session::editor:DEFAULT') || false;
+    if(isSign){
+        isSign = JSON.parse(isSign).signIn
+    }
+    return isSign
+}
+
 //返回当前用户资料
 function currentUser() {
     wilddog.auth().onAuthStateChanged(function(user) {
