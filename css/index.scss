@@ -54,7 +54,7 @@
   width: -webkit-calc(100% - 300px);
   width: -moz-calc(100% - 300px);
   width: calc(100% - 300px);
-  background-color: #fff;
+  background-color: #f5f5f5;
 }
 
 #auth-list{
@@ -78,6 +78,7 @@
   }
 
   .format-tools{
+    position: relative;
     background-color: #e5e5e5;
     border-bottom: 1px solid #ddd;
     padding: 0 30px;
@@ -86,10 +87,10 @@
       margin:0;
       li{
         display: inline-block;
-        width: 40px;
-        height: 40px;
+        width: 39px;
+        height: 39px;
         text-align: center;
-        line-height: 40px;
+        line-height: 39px;
         font-size: 18px;
         color: #666;
 
@@ -102,6 +103,11 @@
         background-color: #666;
         color: #fff;
       }
+    }
+    .btn{
+      position: absolute;
+      right: 0;
+      top: 0;
     }
   }
   .article-content{

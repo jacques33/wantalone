@@ -7,55 +7,47 @@ if(getSignStatus()){
         if (user) {
             console.log("has login in");
 
-
             $(document).ready(function () {
                 fillAuthInfo(user);
 
                 var ch = $(window).height();
                 $('#main-panel').css('height',ch+'px');
 
-
+                //新增文章
                 $('.js-new').click(function () {
                     var main = $('#main-panel>.row');
+                    var fronthtml = main.html();
                     main.html('');
-                    $.ajax({
-                        type: 'GET',
-                        url: 'edit.html',
-                        dataType: "html",
-                        success: function (result) {
-                            main.html(result);
-                            var ch = $(window).height();
-                            $('.article-content').css('height',(ch-81-41)+'px');
-
-                            $('.font-tool').click(function() {
-                                $(this).toggleClass('active');
-                                // $('.article-content').focus();
-
-                                switch($(this).data('role')) {
-                                    case 'bold':
-                                        document.execCommand('bold',false,'<b>');
-                                        break;
-                                    case 'italic':
-                                        document.execCommand('italic',false,'<i>');
-                                        break;
-                                    case 'p':
-                                        document.execCommand('formatBlock', false, '<' + $(this).data('role') + '>');
-                                        break;
-                                    case 'blockquote':
-                                        $('.article-content').append('<blockquote><span></span></blockquote><p><br/></p>');
-                                        break;
-                                    default:
-                                        document.execCommand($(this).data('role'), false, null);
-                                        break;
-                                }
-
-                            })
+                    //获取编辑模块
+                    jacques.getPage('edit.html',main,{
+                        fail:function () {
+                            //还原到之前的状态
+                            main.html(fronthtml);
                         }
-                    })
+                    });
                 });
 
-
-
+                //编辑个人信息
+                $('.js-edit-info').click(function () {
+                    $('.auth-name-intro').addClass('hide');
+                    $('.edit-info').removeClass('hide');
+                });
+                //保存个人信息编辑
+                $('.js-submit-edit').click(function () {
+                    var name = $('.auth-name');
+                    var intro = $('.auth-intro');
+                    var ename = $('.js-edit-name');
+                    var eintro = $('.js-edit-intro');
+                    var nameLen = ename.val().length;
+                    var introLen = eintro.val().length;
+                    if( nameLen > 0 && nameLen < 20 && introLen > 0){
+                        name.html(ename.val());
+                        intro.html(eintro.val());
+                        $('.edit-info').addClass('hide');
+                        $('.auth-name-intro').removeClass('hide');
+                    }
+                    updateUserNameIntro(ename.val(),eintro.val());
+                })
             });
         }
     });
@@ -63,23 +55,37 @@ if(getSignStatus()){
     window.location.href = 'login.html';
 }
 
+var key = '';
 //填充用户信息
 function fillAuthInfo(user) {
     var id = user.uid;
     var name = $('.auth-name');
     var intro = $('.auth-intro');
+    var ename = $('.js-edit-name');
+    var eintro = $('.js-edit-intro');
 
-    var aname = user.name;
-    var aintro = user.intro;
+    var userinfo = wilddog.sync().ref('user');
 
-    var ref = wilddog.sync().ref('user');
-    ref.on('child_added', function(snapshot) {
-        // 这里我们把数据转成 json 格式
-        var data = JSON.stringify(snapshot.val());
-        if(data.id == id){
-            console.log(data.id);
+    userinfo.on("child_added", function(snapshot) {
+        if(snapshot.val().id == id){
+            key = snapshot.key();
+            var n = snapshot.val().name || user.displayName;
+            var i = snapshot.val().intro;
+            name.html(n);
+            intro.html(i);
+            ename.html(n);
+            eintro.val(i);
         }
-        console.log(typeof data)
-    });
+    })
+}
+//更新用户资料
+function updateUserNameIntro(name, intro) {
+    var currUserRef = wilddog.sync().ref('user').child(key);
+    currUserRef.update({
+        "name": name,
+        "intro": intro
+    }).then(function () {
+        console.log('更新用户资料成功');
+    })
 }
 

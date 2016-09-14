@@ -14,7 +14,7 @@ function authSignUp(email, psd, cb) {
             //失败
             cb.fail && cb.fail(error);
             console.log(error)
-        });
+        }   );
 }
 
 //发送注册邮件验证

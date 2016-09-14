@@ -138,7 +138,8 @@ function createUserData(user) {
     ref.child("user").push({
         id:id,
         name: user.displayName,
-        email:user.email
+        email:user.email,
+        intro:'个人简介'
 
     }, function(error) {
         if (error == null){
