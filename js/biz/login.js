@@ -72,6 +72,7 @@ $(document).ready(function () {
                                         console.log(json)
                                     }
                                 });
+                                createUserData(res);
                                 //发送验证邮件
                                 confirmEmail({
                                     succ: function () {
@@ -121,13 +122,28 @@ $(document).ready(function () {
 
         }
     });
-
-    //清空表单
-    function clearForm() {
-        $('.js-email').val('');
-        $('.js-name').val('');
-        $('.js-psd').val('');
-        $('.js-psd1').val('');
-    }
-
+    
 });
+//清空表单
+function clearForm() {
+    $('.js-email').val('');
+    $('.js-name').val('');
+    $('.js-psd').val('');
+    $('.js-psd1').val('');
+}
+
+//创建一条用户数据
+function createUserData(user) {
+    var id = user.uid;
+    ref.child("user").push({
+        id:id,
+        name: user.displayName,
+        email:user.email
+
+    }, function(error) {
+        if (error == null){
+            // 数据同步到野狗云端成功完成
+            console.log('创建用户数据成功')
+        }
+    });
+}

@@ -63,6 +63,7 @@ if(getSignStatus()){
     window.location.href = 'login.html';
 }
 
+//填充用户信息
 function fillAuthInfo(user) {
     var id = user.uid;
     var name = $('.auth-name');
@@ -73,11 +74,12 @@ function fillAuthInfo(user) {
 
     var ref = wilddog.sync().ref('user');
     ref.on('child_added', function(snapshot) {
-        // var data = JSON.stringify(snapshot.val()); // 这里我们把数据转成 json 格式
-        var data = snapshot.val(); // 这里我们把数据转成 json 格式
+        // 这里我们把数据转成 json 格式
+        var data = JSON.stringify(snapshot.val());
         if(data.id == id){
             console.log(data.id);
         }
         console.log(typeof data)
     });
 }
+

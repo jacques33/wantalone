@@ -4,43 +4,32 @@
 
 
 // 用户注册
-function authSignUp(email,psd,cb) {
-    wilddog.auth().createUserWithEmailAndPassword(email, psd).then(function (user) {
-        cb.succ && cb.succ(user);
-        createUserData(user);
-    }).catch(function (error) {
-        // Handle Errors here.
-        cb.fail && cb.fail(error);
-        console.log(error)
-    });
-}
-//创建一条用户数据
-function createUserData(user) {
-    var id = user.uid;
-    ref.child("user").push({
-        id:id,
-        name: user.displayName,
-        email:user.email
+function authSignUp(email, psd, cb) {
+    wilddog.auth().createUserWithEmailAndPassword(email, psd)
+        .then(function (user) {
+            //成功
+            cb.succ && cb.succ(user);
 
-    }, function(error) {
-        if (error == null){
-            // 数据同步到野狗云端成功完成
-            console.log('创建用户数据成功')
-        }
-    });
+        }, function (error) {
+            //失败
+            cb.fail && cb.fail(error);
+            console.log(error)
+        });
 }
+
 //发送注册邮件验证
 function confirmEmail(cb) {
-    wilddog.auth().currentUser.sendEmailVerification().then(function (res) {
-        cb.succ && cb.succ();
-        console.log(res);
-    },function (error) {
-        cb.fail && cb.fail(error);
-    });
+    wilddog.auth().currentUser.sendEmailVerification()
+        .then(function (res) {
+            cb.succ && cb.succ();
+            console.log(res);
+        }, function (error) {
+            cb.fail && cb.fail(error);
+        });
 }
 //用户登陆
-function authSignIn(email,psd,cb) {
-    wilddog.auth().signInWithEmailAndPassword(email, psd).then(function(res){
+function authSignIn(email, psd, cb) {
+    wilddog.auth().signInWithEmailAndPassword(email, psd).then(function (res) {
 
         cb.succ && cb.succ(res);
     }).catch(function (error) {
@@ -49,9 +38,9 @@ function authSignIn(email,psd,cb) {
     });
 }
 //是否登录
-function isSignIn(){
+function isSignIn() {
     var flag;
-    wilddog.auth().onAuthStateChanged(function(user) {
+    wilddog.auth().onAuthStateChanged(function (user) {
         if (user) {
             flag = true;
         } else {
@@ -61,10 +50,10 @@ function isSignIn(){
         return flag;
     });
 }
-//是否登录，上一个方法总是先返回false，因此不做判断
+//是否登录，上一个方法总是先返回false，因此不用做页面刷新时的判断
 function getSignStatus() {
     var isSign = localStorage.getItem('wilddog:session::editor:DEFAULT') || false;
-    if(isSign){
+    if (isSign) {
         isSign = JSON.parse(isSign).signIn
     }
     return isSign
@@ -72,7 +61,7 @@ function getSignStatus() {
 
 //返回当前用户资料
 function currentUser() {
-    wilddog.auth().onAuthStateChanged(function(user) {
+    wilddog.auth().onAuthStateChanged(function (user) {
         if (user) {
             var name = user.displayName;
             user.name = name;
@@ -92,14 +81,14 @@ function isEmailVerified() {
     return false;
 }
 //更新用户资料
-function updateUserInfo(name,photoUrl,cb) {
+function updateUserInfo(name, photoUrl, cb) {
     wilddog.auth().currentUser.updateProfile({
         displayName: name,
         photoURL: photoUrl
-    }).then(function(json) {
+    }).then(function (json) {
 
         cb.succ && cb.succ(json);
-    }, function(error) {
+    }, function (error) {
 
         cb.fail && cb.fail(error);
     });
@@ -107,11 +96,11 @@ function updateUserInfo(name,photoUrl,cb) {
 }
 //退出登录
 function signOut(cb) {
-    wilddog.auth().signOut().then(function() {
+    wilddog.auth().signOut().then(function () {
 
         cb.succ && cb.succ();
         console.log("退出登录")
-    }, function(error) {
+    }, function (error) {
 
         cb.fail && cb.fail(error);
         console.log("退出登录失败")
@@ -119,10 +108,10 @@ function signOut(cb) {
     });
 }
 //重设密码邮件发送
-function resetPsdMail(email,cb) {
+function resetPsdMail(email, cb) {
     wilddog.auth().sendPasswordResetEmail(email).then(function () {
         cb.succ && cb.succ();
-    },function (error) {
+    }, function (error) {
 
         cb.fail && cb.fail(error);
         console.log(error)
