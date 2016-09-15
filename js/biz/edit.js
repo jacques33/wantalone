@@ -3,18 +3,18 @@
  */
 $(document).ready(function () {
     var ch = $(window).height();
-    $('.article-content').css('height',(ch-81-41)+'px');
-    
-    $('.font-tool').click(function() {
-        $(this).toggleClass('active');
+    $('.article-content').css('height', (ch - 81 - 51) + 'px');
+
+    //编辑器
+    $('.article-content .font-tool').click(function () {
         // $('.article-content').focus();
 
-        switch($(this).data('role')) {
+        switch ($(this).data('role')) {
             case 'bold':
-                document.execCommand('bold',false,'<b>');
+                document.execCommand('bold', false, '<b>');
                 break;
             case 'italic':
-                document.execCommand('italic',false,'<i>');
+                document.execCommand('italic', false, '<i>');
                 break;
             case 'p':
                 document.execCommand('formatBlock', false, '<' + $(this).data('role') + '>');
@@ -26,6 +26,26 @@ $(document).ready(function () {
                 document.execCommand($(this).data('role'), false, null);
                 break;
         }
+    });
+    //保存文章
+    $('.js-save-article').click(function () {
+        var title = $('#title');
+        var t = title.val();
+        var content = $('#content').html();
+
+        console.log(t);
+        if (t == '') {
+            alert('标题不能为空', 'warning');
+            title.focus();
+        } else {
+            var articleList = ref.child('user').child(author.key).child('article');
+            articleList.push({
+                "title" : t,
+                "content": content
+            })
+        }
+
 
     })
+
 });

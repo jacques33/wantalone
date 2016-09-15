@@ -31,6 +31,7 @@ if(getSignStatus()){
                 $('.js-edit-info').click(function () {
                     $('.auth-name-intro').addClass('hide');
                     $('.edit-info').removeClass('hide');
+                    $('.js-edit-name').focus();
                 });
                 //保存个人信息编辑
                 $('.js-submit-edit').click(function () {
@@ -73,8 +74,11 @@ function fillAuthInfo(user) {
             var i = snapshot.val().intro;
             name.html(n);
             intro.html(i);
-            ename.html(n);
+            ename.val(n);
             eintro.val(i);
+            
+            author.data = snapshot.val();
+            author.key = key;
         }
     })
 }

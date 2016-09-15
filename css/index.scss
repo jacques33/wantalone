@@ -35,7 +35,14 @@
       color: #333;
     }
     .auth-intro{
+      display: block;
       margin-bottom: 20px;
+      cursor: pointer;
+      color: #86abb7;
+      &:hover{
+        color: #6ba8bb;
+        text-decoration: none;
+      }
     }
     .auth-count{
       color: #777;
@@ -115,6 +122,7 @@
     outline: 0;
     border: 0;
     box-shadow: 0;
+    overflow-y: auto;
 
     blockquote{
       min-height: 47px;

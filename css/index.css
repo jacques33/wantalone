@@ -27,7 +27,13 @@
       margin-bottom: 20px;
       color: #333; }
     #auth-pane .auth-info .auth-intro {
-      margin-bottom: 20px; }
+      display: block;
+      margin-bottom: 20px;
+      cursor: pointer;
+      color: #86abb7; }
+      #auth-pane .auth-info .auth-intro:hover {
+        color: #6ba8bb;
+        text-decoration: none; }
     #auth-pane .auth-info .auth-count {
       color: #777; }
       #auth-pane .auth-info .auth-count i {
@@ -84,7 +90,8 @@
   padding: 30px;
   outline: 0;
   border: 0;
-  box-shadow: 0; }
+  box-shadow: 0;
+  overflow-y: auto; }
   #edit .article-content blockquote {
     min-height: 47px;
     margin: 20px 0; }

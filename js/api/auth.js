@@ -2,7 +2,10 @@
  * Created by jacques on 16/9/5.
  */
 
-
+var author = {
+    key:'',
+    data:{}
+};
 // 用户注册
 function authSignUp(email, psd, cb) {
     wilddog.auth().createUserWithEmailAndPassword(email, psd)
