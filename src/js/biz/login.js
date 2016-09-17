@@ -34,13 +34,13 @@ $(document).ready(function () {
         var n = $('.form-signin').find('.active').index('.js-sign');
         if (n == 0) {
             //登录验证
-            if (checkEmail(email) == true) {
-                if (checkPsd(psd) == true) {
+            if (jacques.checkEmail(email) == true) {
+                if (jacques.checkPsd(psd) == true) {
                     //发送请求
                     authSignIn(email, psd, {
                         succ: function (res) {
                             console.log(res);
-                            window.location.href = 'index.html';
+                            window.location.href = '../../pages/index.html';
                         },
                         fail: function (msg) {
                             console.log(msg);
@@ -49,19 +49,19 @@ $(document).ready(function () {
                     });
                 } else {
                     //密码格式不正确
-                    var msg = checkPsd(psd);
+                    var msg = jacques.checkPsd(psd);
                     alert(msg, "warning");
                 }
             } else {
                 //邮箱地址不正确
-                var msg = checkEmail(email);
+                var msg = jacques.checkEmail(email);
                 alert(msg, "warning");
             }
 
         } else if (n == 1) {
             //注册
-            if (checkEmail(email) == true) {
-                if (checkPsd(psd) == true) {
+            if (jacques.checkEmail(email) == true) {
+                if (jacques.checkPsd(psd) == true) {
                     if (psd == psd1) {
                         authSignUp(email, psd, {
                             succ: function (res) {
@@ -96,12 +96,12 @@ $(document).ready(function () {
                     }
                 } else {
                     //密码格式不正确
-                    var msg = checkPsd(psd);
+                    var msg = jacques.checkPsd(psd);
                     alert(msg, "warning");
                 }
             } else {
                 //邮箱地址不正确
-                var msg = checkEmail(email);
+                var msg = jacques.checkEmail(email);
                 alert(msg, "warning");
             }
 

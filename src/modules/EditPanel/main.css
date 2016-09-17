@@ -1,0 +1,47 @@
+#edit .article-title {
+  box-sizing: border-box;
+  padding: 10px;
+  border-bottom: 1px solid #ddd; }
+  #edit .article-title .input-lg, #edit .article-title .input-lg:focus {
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+    font-size: 24px;
+    color: #333; }
+#edit .format-tools {
+  position: relative;
+  background-color: #e5e5e5;
+  border-bottom: 1px solid #ddd;
+  padding: 0 30px; }
+  #edit .format-tools ul {
+    list-style: none;
+    margin: 0; }
+    #edit .format-tools ul li {
+      display: inline-block;
+      width: 39px;
+      height: 39px;
+      text-align: center;
+      line-height: 39px;
+      font-size: 18px;
+      color: #666; }
+      #edit .format-tools ul li:hover {
+        background-color: #666;
+        color: #fff; }
+    #edit .format-tools ul li.active {
+      background-color: #666;
+      color: #fff; }
+  #edit .format-tools .btn {
+    position: absolute;
+    right: 0;
+    top: 0; }
+#edit .article-content {
+  padding: 30px;
+  outline: 0;
+  border: 0;
+  box-shadow: 0;
+  overflow-y: auto; }
+  #edit .article-content blockquote {
+    min-height: 47px;
+    margin: 20px 0; }
+
+/*# sourceMappingURL=main.css.map */

@@ -19,7 +19,7 @@ if(getSignStatus()){
                     var fronthtml = main.html();
                     main.html('');
                     //获取编辑模块
-                    jacques.getPage('edit.html',main,{
+                    jacques.getPage('modules/EditPanel/main.html',main,{
                         fail:function () {
                             //还原到之前的状态
                             main.html(fronthtml);

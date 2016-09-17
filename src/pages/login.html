@@ -2,29 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="jacques">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>请登陆--Want Alone</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/common.css" rel="stylesheet">
-    <link href="css/login.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    @@include('modules/Head/index.html',{"title":"请登陆--Want Alone"})
 </head>
 
 <body>
-<section id="logo">
+<section id="log">
     <h1 class="text-center">Want&nbsp;&nbsp;Alone</h1>
 </section>
 <section id="content">
@@ -62,14 +44,10 @@
     </div>
 </div>
 
-<script src="js/vendor/jquery-2.1.3.min.js"></script>
-<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/vendor.js"></script>
 <script src = "https://cdn.wilddog.com/sdk/js/2.0.0/wilddog.js"></script>
-<script src = "js/biz/common.js"></script>
-<script src = "js/api/global.js"></script>
-<script src = "js/api/auth.js"></script>
-<script src = "js/biz/alert.js"></script>
-<script src = "js/biz/login.js"></script>
+<script src = "js/api.js"></script>
+<script src = "js/login.js"></script>
 
 </body>
 </html>

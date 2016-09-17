@@ -1,0 +1,68 @@
+
+//auth-nav
+
+#auth-pane{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  padding: 0;
+  background-color: #f5f5f5;
+  border-right: 1px solid #d9d9d9;
+  box-shadow: -1px 1px 6px rgba(0,0,0,0.35);
+  z-index:3;
+
+  .auth-info{
+    padding: 60px 30px 0;
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+
+    .auth-img{
+      width: 90px;
+      height: 90px;
+      display: block;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+    }
+    .edit-info{
+      margin-bottom: 10px;
+    }
+    .auth-name{
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .auth-intro{
+      display: block;
+      margin-bottom: 20px;
+      cursor: pointer;
+      color: #86abb7;
+      &:hover{
+        color: #6ba8bb;
+        text-decoration: none;
+      }
+    }
+    .auth-count{
+      color: #777;
+      i{
+        margin-left: 5px;
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+
+#main-panel{
+  position: relative;
+  margin-left: 300px;
+  width: calc(100% - 300px);
+  background-color: #f5f5f5;
+}
+
+#auth-list{
+  padding: 40px;
+}
+//edit panel

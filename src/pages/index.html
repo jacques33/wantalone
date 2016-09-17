@@ -1,18 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="jacques">
-
-    <title>Want Alone</title>
-    <link rel="icon" href="favicon.ico">
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/common.css" rel="stylesheet">
-    <link href="css/index.css" rel="stylesheet">
+    @@include('modules/Head/index.html',{"title":"Want Alone"})
 
 </head>
 <body>
@@ -22,7 +11,7 @@
             <h1 class="text-center">Want&nbsp;&nbsp;Alone</h1>
         </section>
         <section class="auth-info">
-            <img class="auth-img" src="img/auth.png">
+            <img class="auth-img" src="../img/auth.png">
             <div class="edit-info hide">
                 <input class="js-edit-name form-control" type="text" placeholder="昵称…">
                 <input class="js-edit-intro form-control" type="text" placeholder="简介…">
@@ -51,21 +40,10 @@
     </div>
 </section>
 
-
-
-
-<script src="js/vendor/jquery-2.1.3.min.js"></script>
-<script src="js/vendor/bootstrap.min.js"></script>
-
+<script src="js/vendor.js"></script>
 <script src = "https://cdn.wilddog.com/sdk/js/2.0.0/wilddog.js"></script>
-
-
-<script src = "js/api/global.js"></script>
-<script src = "js/api/auth.js"></script>
-<script src = "js/api/requirePage.js"></script>
-<script src = "js/biz/common.js"></script>
-<script src = "js/biz/alert.js"></script>
-<script src = "js/biz/index.js"></script>
+<script src = "js/api.js"></script>
+<script src = "js/index.js"></script>
 
 </body>
 </html>
