@@ -12,7 +12,7 @@ livereload = require('gulp-livereload');
 gulp.task('connect', function () {
     connect.server({
         root: './dist/',
-        port: 9999,
+        port: 6666,
         livereload: true
     });
 });
