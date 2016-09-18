@@ -40,7 +40,7 @@ $(document).ready(function () {
                     authSignIn(email, psd, {
                         succ: function (res) {
                             console.log(res);
-                            window.location.href = '../../pages/index.html';
+                            window.location.href = 'index.html';
                         },
                         fail: function (msg) {
                             console.log(msg);
@@ -76,11 +76,12 @@ $(document).ready(function () {
                                 //发送验证邮件
                                 confirmEmail({
                                     succ: function () {
-                                        alert("验证邮件已发送,请到邮箱查收", "success");
+                                        alert("验证邮件已发送,请到邮箱查收并验证", "success");
                                         setTimeout(function () {
-                                            var href = window.location.href;
-                                            location.href = href + '?confirm=true'
-                                        }, 3000);
+                                            // var href = window.location.href;
+                                            // location.href = href + '?confirm=true'
+                                            window.location.href = 'index.html'
+                                        }, 2000);
                                     },
                                     fail: function () {
                                         alert("邮件发送不成功,请重试", "warning")
@@ -139,7 +140,9 @@ function createUserData(user) {
         id:id,
         name: user.displayName,
         email:user.email,
-        intro:'个人简介'
+        intro:'个人简介',
+        artnum: 0,
+        fontnum:0
 
     }, function(error) {
         if (error == null){

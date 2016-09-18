@@ -7,7 +7,9 @@
     outline: 0;
     box-shadow: none;
     font-size: 24px;
-    color: #333; }
+    color: #333;
+    background-color: #f5f5f5;
+    margin-bottom: 0; }
 #edit .format-tools {
   position: relative;
   background-color: #e5e5e5;

@@ -53,7 +53,7 @@ function isSignIn() {
         return flag;
     });
 }
-//是否登录，上一个方法总是先返回false，因此不用做页面刷新时的判断
+//是否登录，上一个方法总是先返回false，因此不用于页面刷新时的判断
 function getSignStatus() {
     var isSign = localStorage.getItem('wilddog:session::editor:DEFAULT') || false;
     if (isSign) {
@@ -66,8 +66,6 @@ function getSignStatus() {
 function currentUser() {
     wilddog.auth().onAuthStateChanged(function (user) {
         if (user) {
-            var name = user.displayName;
-            user.name = name;
             console.log(user);
             return user;
         } else {
@@ -76,6 +74,7 @@ function currentUser() {
         }
     });
 }
+//邮箱是否已验证
 function isEmailVerified() {
     var user = wilddog.auth().currentUser;
     if (user != null) {

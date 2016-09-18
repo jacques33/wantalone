@@ -40,5 +40,31 @@ var jacques = {
             return msg;
         }
         return true;
+    },
+
+    //计算json数据的条目数
+    jsonLength: function (json) {
+        var count = 0;
+        for(var item in json){
+            count++;
+        }
+        return count
+    },
+    getCurrentTime:function () {
+        var myDate = new Date();
+        var date = myDate.toLocaleDateString();     //获取当前日期
+        var mytime=myDate.toLocaleTimeString();     //获取当前时间
+        var time = mytime.substr(2,mytime.length);
+        var halfDay = mytime.substr(0,2);
+        if(halfDay == '下午'){
+            var array = time.split(':');
+            array[0] = parseInt(array[0])+12;
+            time = array.join(':');
+        }
+        var currentTime = {
+            "date": date,
+            "time": time
+        };
+        return currentTime
     }
 };

@@ -19,7 +19,7 @@ if(getSignStatus()){
                     var fronthtml = main.html();
                     main.html('');
                     //获取编辑模块
-                    jacques.getPage('modules/EditPanel/main.html',main,{
+                    jacques.getPage('modules/EditPanel.html',main,{
                         fail:function () {
                             //还原到之前的状态
                             main.html(fronthtml);
@@ -33,6 +33,7 @@ if(getSignStatus()){
                     $('.edit-info').removeClass('hide');
                     $('.js-edit-name').focus();
                 });
+
                 //保存个人信息编辑
                 $('.js-submit-edit').click(function () {
                     var name = $('.auth-name');
@@ -44,10 +45,22 @@ if(getSignStatus()){
                     if( nameLen > 0 && nameLen < 20 && introLen > 0){
                         name.html(ename.val());
                         intro.html(eintro.val());
-                        $('.edit-info').addClass('hide');
-                        $('.auth-name-intro').removeClass('hide');
+
+                        //更新用户数据
+                        var update = {
+                            "name": ename.val(),
+                            "intro": eintro.val()
+                        };
+                        updateUserInfo(update,{
+                            succ: function () {
+                                $('.edit-info').addClass('hide');
+                                $('.auth-name-intro').removeClass('hide');
+                            },
+                            fail:function () {
+                                alert('更改失败,请检查网络后重试','warning')
+                            }
+                        });
                     }
-                    updateUserNameIntro(ename.val(),eintro.val());
                 })
             });
         }
@@ -56,7 +69,6 @@ if(getSignStatus()){
     window.location.href = 'login.html';
 }
 
-var key = '';
 //填充用户信息
 function fillAuthInfo(user) {
     var id = user.uid;
@@ -64,18 +76,24 @@ function fillAuthInfo(user) {
     var intro = $('.auth-intro');
     var ename = $('.js-edit-name');
     var eintro = $('.js-edit-intro');
+    var artNum = $('.article-num');
+    var fontNum = $('.font-num');
 
     var userinfo = wilddog.sync().ref('user');
 
     userinfo.on("child_added", function(snapshot) {
         if(snapshot.val().id == id){
-            key = snapshot.key();
+            var key = snapshot.key();
             var n = snapshot.val().name || user.displayName;
             var i = snapshot.val().intro;
+            var an = snapshot.val().artnum;
+            var fn = snapshot.val().fontnum;
             name.html(n);
             intro.html(i);
             ename.val(n);
             eintro.val(i);
+            artNum.html(an);
+            fontNum.html(fn);
             
             author.data = snapshot.val();
             author.key = key;
@@ -83,13 +101,15 @@ function fillAuthInfo(user) {
     })
 }
 //更新用户资料
-function updateUserNameIntro(name, intro) {
-    var currUserRef = wilddog.sync().ref('user').child(key);
-    currUserRef.update({
-        "name": name,
-        "intro": intro
-    }).then(function () {
-        console.log('更新用户资料成功');
+function updateUserInfo(data,cb) {
+    var currUserRef = wilddog.sync().ref('user').child(author.key);
+    currUserRef.update(data,function(error) {
+        if (error == null){
+            cb.succ && cb.succ();
+            console.log('更新用户资料成功');
+        }else{
+            cb.fail && cb.fail();
+        }
     })
 }
 
