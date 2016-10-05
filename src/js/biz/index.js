@@ -8,6 +8,16 @@ if(getSignStatus()){
             console.log("has login in");
 
             $(document).ready(function () {
+                var main = $('#main-panel>.row');
+                //获取编辑模块
+                jacques.getPage('modules/ArticleList.html',main,{
+                    fail:function () {
+                        //还原到之前的状态
+                        alert('fail','warning');
+                        //main.html(fronthtml);
+                    }
+                });
+
                 fillAuthInfo(user);
 
                 var ch = $(window).height();
