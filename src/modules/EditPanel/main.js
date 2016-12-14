@@ -51,7 +51,7 @@ $(document).ready(function () {
                 if (error == null) {
                     var article = snapshot.val();
                     artnum = jacques.jsonLength(article);
-                    
+
                     var updateData1 = {
                         "id": artnum+1,
                         "title" : t,

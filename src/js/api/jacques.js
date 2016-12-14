@@ -2,13 +2,15 @@
  * Created by jacques on 2016/9/14.
  */
 var jacques = {
-    getPage: function (url, parent, cb) {
+    getPage: function (moduleName, parent, cb) {
         $.ajax({
             type: 'GET',
-            url: url,
+            url: 'modules/'+moduleName+'.html',
             dataType: "html",
             success: function (result) {
                 parent.append(result);
+                var js = '<script src="modules/'+moduleName+'.js"></script>';
+                $('body').append(js);
                 cb.succ && cb.succ(result);
             },
             error: function () {
