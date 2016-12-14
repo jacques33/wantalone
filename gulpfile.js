@@ -26,7 +26,7 @@ gulp.task('scripts1', function () {
         .pipe(livereload());
 });
 gulp.task('scripts2', function () {
-    return gulp.src(['src/js/vendor/jquery-2.1.3.min.js', 'src/js/vendor/bootstrap.min.js'])
+    return gulp.src(['src/js/vendor/jquery-2.1.3.min.js', 'src/js/vendor/bootstrap.min.js','src/js/vendor/*.js'])
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest('./dist/js'))
         .pipe(livereload());

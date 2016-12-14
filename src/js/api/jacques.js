@@ -10,6 +10,7 @@ var jacques = {
             success: function (result) {
                 parent.append(result);
                 var js = '<script src="modules/'+moduleName+'.js"></script>';
+                $('body').find('script[src*="modules/"]').remove();
                 $('body').append(js);
                 cb.succ && cb.succ(result);
             },

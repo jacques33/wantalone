@@ -6,36 +6,22 @@ if(getSignStatus()){
     wilddog.auth().onAuthStateChanged(function(user) {
         if (user) {
             console.log("has login in");
+            jacques.user = user;
 
             $(document).ready(function () {
                 var main = $('#main-panel>.row');
-                //获取编辑模块
-                jacques.getPage('modules/ArticleList.html',main,{
+
+                //填充用户信息
+                fillAuthInfo();
+
+                //获取文章列表模块
+                jacques.getPage('ArticleList',main,{
                     fail:function () {
-                        //还原到之前的状态
-                        alert('fail','warning');
-                        //main.html(fronthtml);
+                        main.html('<a onclick="addArticleList()">加载文章列表失败,请检查网络,并点击这里重试……</a>');
                     }
                 });
-
-                fillAuthInfo(user);
-
                 var ch = $(window).height();
                 $('#main-panel').css('height',ch+'px');
-
-                //新增文章
-                $('.js-new').click(function () {
-                    var main = $('#main-panel>.row');
-                    var fronthtml = main.html();
-                    main.html('');
-                    //获取编辑模块
-                    jacques.getPage('EditPanel',main,{
-                        fail:function () {
-                            //还原到之前的状态
-                            main.html(fronthtml);
-                        }
-                    });
-                });
 
                 //编辑个人信息
                 $('.js-edit-info').click(function () {
@@ -80,8 +66,8 @@ if(getSignStatus()){
 }
 
 //填充用户信息
-function fillAuthInfo(user) {
-    var id = user.uid;
+function fillAuthInfo() {
+    var id = jacques.user.uid;
     var name = $('.auth-name');
     var intro = $('.auth-intro');
     var ename = $('.js-edit-name');
@@ -94,18 +80,19 @@ function fillAuthInfo(user) {
     userinfo.on("child_added", function(snapshot) {
         if(snapshot.val().id == id){
             var key = snapshot.key();
-            var n = snapshot.val().name || user.displayName;
-            var i = snapshot.val().intro;
-            var an = snapshot.val().artnum;
-            var fn = snapshot.val().fontnum;
+            var data = snapshot.val();
+            var n = data.name || user.displayName;
+            var i = data.intro;
+            var an = data.artnum;
+            var fn = data.fontnum;
             name.html(n);
             intro.html(i);
             ename.val(n);
             eintro.val(i);
             artNum.html(an);
             fontNum.html(fn);
-            
-            author.data = snapshot.val();
+
+            author.data = data;
             author.key = key;
         }
     })

@@ -46,13 +46,13 @@ $(document).ready(function () {
 
             //查询之前的文章数据
             var currUser = ref.child('user').child(author.key);
-            var artnum;
+            var artnum,updateData1,updateData2;
             currUser.child('article').on('value', function(snapshot, error) {
-                if (error == null) {
+                if (!error) {
                     var article = snapshot.val();
-                    artnum = jacques.jsonLength(article);
+                    artnum = jacques.userData.article.length;
 
-                    var updateData1 = {
+                    updateData1 = {
                         "id": artnum+1,
                         "title" : t,
                         "content": content,
@@ -60,30 +60,38 @@ $(document).ready(function () {
                         "date": current.date,
                         "time": current.time
                     };
-                    var updateData2 = {
+                    updateData2 = {
                         'artnum': artnum+1,
                         'fontnum': author.data.fontnum +fontLen
                     };
-
-                    currUser.child('article').push(updateData1,function (error) {
-                        if(error == null){
-                            updateUserInfo(updateData2,{
-                                succ: function () {
-                                    alert('保存成功!','success');
-                                },
-                                fail:function () {
-                                    alert('更新文章信息失败,请检查网络后重新保存','warning')
-                                }
-                            })
-                        }else{
-                            alert('上传文章失败,请检查网络后重新保存','warning')
-                        }
-                    });
 
                 } else {
                     console.log(error);
                 }
             });
+            //上传文章
+            currUser.child('article').push(updateData1,function (error) {
+                if(error == null){
+                    alert('保存成功!','success',1500);
+                    setTimeout(function () {
+                        $('#main-panel>.row').html('');
+                        fillAuthInfo();
+                        addArticleList();
+                    },1500);
+
+                }else{
+                    alert('上传文章失败,请检查网络后重新保存','warning')
+                }
+            });
+            //更新文章信息
+            updateUserInfo(updateData2,{
+                succ: function () {
+                    // alert('保存成功!','success');
+                },
+                fail:function () {
+                    alert('更新文章信息失败,请检查网络后重新保存','warning')
+                }
+            })
 
         }
 

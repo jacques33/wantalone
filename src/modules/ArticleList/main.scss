@@ -1,0 +1,38 @@
+#ArticleList {
+  padding: 0 40px 20px;
+  position: relative;
+
+  #auth-list {
+    padding: 30px 40px;
+  }
+  .sub-title {
+    font-size: 22px;
+    margin: 20px 0;
+  }
+  .art-item {
+    position: relative;
+    border-top: 1px solid #ddd;
+    padding: 15px 0;
+    text-align: left;
+    cursor: pointer;
+    .art-item-t {
+      font-size: 16px;
+      color: #666;
+      margin: 10px 0;
+      span {
+        font-size: 12px;
+        color: #999;
+        margin: 0;
+        float: right;
+      }
+    }
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
+
+  }
+  .art-item:last-child {
+    border-bottom: 1px solid #ddd;
+  }
+}
