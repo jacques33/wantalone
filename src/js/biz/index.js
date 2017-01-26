@@ -6,7 +6,7 @@ if(getSignStatus()){
     wilddog.auth().onAuthStateChanged(function(user) {
         if (user) {
             console.log("has login in");
-            jacques.user = user;
+            jacques.data.user = user;
 
             $(document).ready(function () {
                 var main = $('#main-panel>.row');
@@ -67,7 +67,7 @@ if(getSignStatus()){
 
 //填充用户信息
 function fillAuthInfo() {
-    var id = jacques.user.uid;
+    var id = jacques.data.user.uid;
     var name = $('.auth-name');
     var intro = $('.auth-intro');
     var ename = $('.js-edit-name');

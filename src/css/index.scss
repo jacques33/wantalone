@@ -52,6 +52,7 @@
       }
     }
   }
+
 }
 
 
@@ -60,6 +61,14 @@
   margin-left: 300px;
   width: calc(100% - 300px);
   background-color: #f5f5f5;
+
+  .breadcrumb{
+    margin: 10px 25px;
+
+    a{
+      cursor: pointer;
+    }
+  }
 }
 
 

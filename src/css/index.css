@@ -45,5 +45,9 @@
   margin-left: 300px;
   width: calc(100% - 300px);
   background-color: #f5f5f5; }
+  #main-panel .breadcrumb {
+    margin: 10px 25px; }
+    #main-panel .breadcrumb a {
+      cursor: pointer; }
 
 /*# sourceMappingURL=index.css.map */

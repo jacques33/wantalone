@@ -1,3 +1,19 @@
-
+#ArticleContent {
+  padding: 10px 40px 40px; }
+  #ArticleContent .atc-title {
+    text-align: center;
+    font-size: 36px; }
+  #ArticleContent .atc-info {
+    margin-bottom: 30px; }
+  #ArticleContent .atc-info {
+    text-align: center;
+    color: #1b6d85;
+    font-size: 12px; }
+  #ArticleContent .atc-info-time {
+    margin-right: 20px; }
+  #ArticleContent .edit-again {
+    color: #2aabd2;
+    margin-left: 20px;
+    cursor: pointer; }
 
 /*# sourceMappingURL=main.css.map */

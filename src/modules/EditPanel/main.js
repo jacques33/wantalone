@@ -1,7 +1,12 @@
+//@ sourceURL=modules/EditPanel.js
 /**
  * Created by jacques on 2016/9/14.
  */
 $(document).ready(function () {
+
+    $('.breadcrumb').html('<li><a mid="ArticleList">主页</a></li><li><span mid="EditPanel">编辑文章</span></li>').show();
+    changeLinkStatus();
+    
     var ch = $(window).height();
     $('.article-content').css('height', (ch - 81 - 51) + 'px');
 
@@ -50,7 +55,7 @@ $(document).ready(function () {
             currUser.child('article').on('value', function(snapshot, error) {
                 if (!error) {
                     var article = snapshot.val();
-                    artnum = jacques.userData.article.length;
+                    artnum = jacques.data.userData.article.length;
 
                     updateData1 = {
                         "id": artnum+1,
@@ -96,5 +101,11 @@ $(document).ready(function () {
         }
 
     })
-
+    
 });
+function editCurrentArt() {
+    $('.breadcrumb').html('<li><a mid="ArticleList">主页</a></li><li><a mid="ArticleContent">文章详细</a></li><li><span mid="EditPanel">编辑文章</span></li>').show();
+
+    $('#title').val(jacques.data.currentArt.title);
+    $('.editContent').html(jacques.data.currentArt.content).focus();
+}

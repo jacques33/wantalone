@@ -2,6 +2,11 @@
  * Created by jacques on 2016/9/14.
  */
 var jacques = {
+    data:{
+        user:'',  
+        currentArt:'',
+        artList:[]
+    },
     getPage: function (moduleName, parent, cb) {
         $.ajax({
             type: 'GET',

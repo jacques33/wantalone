@@ -3,12 +3,12 @@
         @@include('modules/ArticleList/main.css')
     </style>
     <div id="auth-list">
-        <button class="js-new btn btn-success pull-right">+ 新增文章</button>
+        <button class="js-new btn btn-success pull-right" onclick="addNew()">+ 新增文章</button>
     </div>
     <h3 class="sub-title">文章列表</h3>
     <div class="art-tpl hide">
         {{#article}}
-        <div class="art-item" aid="{{id}}">
+        <div class="art-item" aid="{{id}}" onclick="openArt(this)">
             <h4 class="art-item-t">
                 {{title}}
                 <span class="edit-times">{{date}}</span>

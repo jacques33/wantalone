@@ -1,0 +1,24 @@
+#ArticleContent{
+    padding: 10px 40px 40px;
+
+    .atc-title{
+        text-align: center;
+        font-size: 36px;
+    }
+    .atc-info{
+        margin-bottom: 30px;
+    }
+    .atc-info{
+        text-align: center;
+        color: #1b6d85;
+        font-size: 12px;
+    }
+    .atc-info-time{
+        margin-right: 20px;
+    }
+    .edit-again{
+        color: #2aabd2;
+        margin-left: 20px;
+        cursor:pointer;
+    }
+}

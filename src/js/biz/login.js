@@ -39,6 +39,11 @@ $(document).ready(function () {
                     //发送请求
                     authSignIn(email, psd, {
                         succ: function (res) {
+                            var userinfo = {
+                                email:email,
+                                pwd:psd
+                            };
+                            localStorage.setItem('jacques_user',JSON.stringify(userinfo));
                             console.log(res);
                             window.location.href = 'index.html';
                         },
