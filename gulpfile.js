@@ -66,6 +66,12 @@ gulp.task('root', function () {
         .pipe(gulp.dest('./dist'))
         .pipe(livereload());
 });
+//字体
+gulp.task('font', function () {
+    return gulp.src('src/css/fonts/*.*')
+        .pipe(gulp.dest('./dist/css/fonts'))
+        .pipe(livereload());
+});
 gulp.task('img', function () {
     return gulp.src('src/img/*.*')
         .pipe(gulp.dest('./dist/img'))
@@ -93,6 +99,6 @@ gulp.task('watch',function () {
 });
 
 //执行
-gulp.task('default', ['watch','img', 'root', 'html', 'scripts1', 'scripts2', 'scripts3', 'scripts4', 'css', 'connect'], function () {
+gulp.task('default', ['watch','img', 'root', 'html', 'scripts1', 'scripts2', 'scripts3', 'scripts4', 'css','font', 'connect'], function () {
     // 将你的默认的任务代码放在这
 });

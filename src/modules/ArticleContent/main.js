@@ -11,7 +11,7 @@ $(document).ready(function () {
     var art = jacques.data.currentArt;
     var html = Mustache.render(tpl,{article:art});
     $('.atc-tpl').html(html);
-    $('.atc-content').html(art.content);
+    $('.atc-content').html(art.content).css(art.contentStyle);
 
 });
 function editCurrentArt() {

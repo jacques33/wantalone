@@ -6,9 +6,14 @@
         {{#article}}
         <h1 class="atc-title">{{title}}</h1>
         <p class="atc-info">
-            时间：
+            初始时间：
             <span class="atc-info-date">{{date}}</span>
             <span class="atc-info-time">&nbsp;{{time}}</span>
+            {{#updateDate}}
+            更新时间：
+            <span class="atc-info-date">{{updateDate}}</span>
+            <span class="atc-info-time">&nbsp;{{updateTime}}</span>
+            {{/updateDate}}
             字数：
             <span class="atc-info-num">{{fontnum}}</span>
             <a class="edit-again" title="重新编辑文章" aid="{{id}}" onclick="editCurrentArt()">编辑</a>

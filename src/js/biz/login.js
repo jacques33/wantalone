@@ -3,6 +3,10 @@
  */
 
 $(document).ready(function () {
+    // 判断用户是否登录
+    if(getSignStatus()){
+        window.location.href = '/index.html'
+    }
     var href = window.location.href;
     //
     if (href.indexOf('confirm') > 0) {

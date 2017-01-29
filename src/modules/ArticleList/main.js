@@ -63,6 +63,9 @@ function addNew() {
     main.html('');
     //获取编辑模块
     jacques.getPage('EditPanel',main,{
+        succ:function () {
+            jacques.data.currentArt = '';
+        },
         fail:function () {
             //还原到之前的状态
             main.html(fronthtml);

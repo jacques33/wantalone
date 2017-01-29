@@ -1,5 +1,5 @@
 #ArticleList {
-  padding: 0 40px 20px;
+  padding: 0 40px 100px;
   position: relative;
 
   #auth-list {
@@ -12,7 +12,7 @@
   .art-item {
     position: relative;
     border-top: 1px solid #ddd;
-    padding: 15px 0;
+    padding: 15px 10px;
     text-align: left;
     cursor: pointer;
     .art-item-t {

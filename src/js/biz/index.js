@@ -47,7 +47,7 @@ if(getSignStatus()){
                             "name": ename.val(),
                             "intro": eintro.val()
                         };
-                        updateUserInfo(update,{
+                        updateUserData(update,{
                             succ: function () {
                                 $('.edit-info').addClass('hide');
                                 $('.auth-name-intro').removeClass('hide');
@@ -81,7 +81,8 @@ function fillAuthInfo() {
         if(snapshot.val().id == id){
             var key = snapshot.key();
             var data = snapshot.val();
-            var n = data.name || user.displayName;
+            jacques.data.userData = data;
+            var n = data.name || jacques.data.user.displayName;
             var i = data.intro;
             var an = data.artnum;
             var fn = data.fontnum;
@@ -98,12 +99,13 @@ function fillAuthInfo() {
     })
 }
 //更新用户资料
-function updateUserInfo(data,cb) {
+function updateUserData(data,cb) {
     var currUserRef = wilddog.sync().ref('user').child(author.key);
     currUserRef.update(data,function(error) {
         if (error == null){
             cb.succ && cb.succ();
             console.log('更新用户资料成功');
+
         }else{
             cb.fail && cb.fail();
         }

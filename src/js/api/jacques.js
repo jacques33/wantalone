@@ -64,10 +64,16 @@ var jacques = {
         var mytime=myDate.toLocaleTimeString();     //获取当前时间
         var time = mytime.substr(2,mytime.length);
         var halfDay = mytime.substr(0,2);
+        var array = time.split(':');
         if(halfDay == '下午'){
-            var array = time.split(':');
             array[0] = parseInt(array[0])+12;
             time = array.join(':');
+        }else{
+            //如果是上午12点，则变成0点
+            if(array[0] == '12'){
+                array[0] = '00';
+                time = array.join(':');
+            }
         }
         var currentTime = {
             "date": date,
